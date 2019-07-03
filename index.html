@@ -9,10 +9,10 @@
     <!-- create your content here. just a box for now -->
     <!--<a-box color = '#FEFEFF'depth='2' height='2' width='2' material='opacity: 0.8;'></a-box>-->
     <a-assets timeout='10000'>
-	<a-asset-item id="tree" src='https://hikruschips.github.io/noh_mask_kurama_tengu/scene.gltf'></a-asset-item>
+	<a-asset-item id="tree" src='https://hikruschips.github.io/mech_drone/scene.gltf'></a-asset-item>
 </a-assets>
 <!-- use your gltf model -->
-<a-entity scale="2 2 2" gltf-model="#tree"></a-entity>
+<a-entity scale="0.01 0.01 0.01" animation-mixer="loop:repeat" gltf-model="#tree"></a-entity>
     <!-- define a camera which will move according to the marker position -->
     <a-marker-camera type ='pattern' url='360.patt'></a-marker-camera>
   </a-scene>
