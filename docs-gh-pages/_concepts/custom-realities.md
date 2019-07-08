@@ -1,1 +1,0 @@
-Add more information about custom realities, and move some of that information from architecture

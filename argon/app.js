@@ -34,7 +34,7 @@ userLocation.add(argonTextObject);
 try {
     var loader = new THREE.TextureLoader();
     loader.crossOrigin = "*";
-    loader.load(".png", function (tex) {
+    loader.load("3.png", function (tex) {
         var geometry = new THREE.PlaneGeometry(202.4, 101.2);
         mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: tex }));
         argonTextObject.add(mesh);
