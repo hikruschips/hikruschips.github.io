@@ -2,9 +2,10 @@ var camera;
 var canvas = document.getElementById('canvas');
 
 var texture;
+var material;
 (function(){
 
-  initBody();
+  
 
 
   var width = window.innerWidth,
@@ -20,9 +21,10 @@ var texture;
     geometry.scale( - 1, 1, 1 );
 
   texture = new THREE.TextureLoader().load('https://hikruschips.github.io/whereToWear/goldenLouvre.jpg') /*THREE.ImageUtils.loadTexture( 'https://github.com/hikruschips/vr/blob/master/hongkong-stereo.jpg' )*/
-  var material = new THREE.MeshBasicMaterial( {
+  material = new THREE.MeshBasicMaterial( {
        map: texture
   } );
+
 
   var sphere = new THREE.Mesh( geometry, material );
   scene.add( sphere );
@@ -82,17 +84,25 @@ var texture;
   }
 
 
-
+  addEventListeners();
 
 
 })();
 
 function addEventListeners(){
 
+
+
   var image = document.createElement('img');
-  texture = new THREE.Texture(image);
+  
   image.onload = function(){
+
+    texture = new THREE.TextureLoader().load(image.src);
     texture.needsUpdate = true;
+    material.needsUpdate = true;
+    material.map.needsUpdate = true;
+    
+
 
   };
 
