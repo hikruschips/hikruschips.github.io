@@ -169,6 +169,7 @@ function saveAsImage(renderer) {
         var imgData, imgNode;
 
         try {
+            var strDownloadMime = "image/octet-stream"; 
             var strMime = "image/jpeg";
             imgData = renderer.domElement.toDataURL(strMime);
 
