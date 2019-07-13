@@ -1,6 +1,7 @@
 var camera;
 var canvas = document.getElementById('canvas');
 
+var texture;
 (function(){
 
   initBody();
@@ -18,9 +19,9 @@ var canvas = document.getElementById('canvas');
   var geometry = new THREE.SphereGeometry( 5, 60, 40 );
     geometry.scale( - 1, 1, 1 );
 
-  
+  texture = new THREE.TextureLoader().load('https://hikruschips.github.io/whereToWear/goldenLouvre.jpg') /*THREE.ImageUtils.loadTexture( 'https://github.com/hikruschips/vr/blob/master/hongkong-stereo.jpg' )*/
   var material = new THREE.MeshBasicMaterial( {
-       map: new THREE.TextureLoader().load('https://hikruschips.github.io/whereToWear/goldenLouvre.jpg') /*THREE.ImageUtils.loadTexture( 'https://github.com/hikruschips/vr/blob/master/hongkong-stereo.jpg' )*/
+       map: texture
   } );
 
   var sphere = new THREE.Mesh( geometry, material );
@@ -81,11 +82,32 @@ var canvas = document.getElementById('canvas');
   }
 
 
+
+
+
 })();
 
-function initBody(){
+function addEventListeners(){
 
+  var image = document.createElement('img');
+  texture = new THREE.Texture(image);
+  image.onload = function(){
+    texture.needsUpdate = true;
 
+  };
+
+  var userImage = document.getElementById('userImage');
+
+  userImage.addEventListener('change',function(){
+
+    var reader = new FileReader();
+
+    reader.onload = function(e){
+      document.getElementById('image').src = e.target.result;
+    }
+    reader.readAsDataDataURL(image);
+
+  });
 }
 
 function setPerspective(){
@@ -100,8 +122,9 @@ function setLittlePlanet(){
 
   
 
-  canvas.innerHTML='';
-
+  //canvas.innerHTML='';
+  //for test panolens
+  var canvas2 = document.getElementById('canvas2');
   var viewer = new PANOLENS.Viewer( { controlBar: false,container: canvas} );
   var littlePlanet = new PANOLENS.ImageLittlePlanet('https://s3-ap-northeast-1.amazonaws.com/hikruschips/vr/goldenLouvre.jpg');
 
