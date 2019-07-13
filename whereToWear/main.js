@@ -122,7 +122,7 @@ function addEventListeners(){
 
 
 
-  document.getElementById('captureButton').addEventListener('onclick',function(){
+  document.getElementById('captureButton').addEventListener('click',function(){
     saveAsImage(renderer);
   });
 }
