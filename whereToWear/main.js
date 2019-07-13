@@ -101,7 +101,7 @@ function addEventListeners(){
     texture.needsUpdate = true;
     material.needsUpdate = true;
     material.map.needsUpdate = true;
-    
+
 
 
   };
@@ -113,9 +113,9 @@ function addEventListeners(){
     var reader = new FileReader();
 
     reader.onload = function(e){
-      document.getElementById('image').src = e.target.result;
+      image.src = e.target.result;
     }
-    reader.readAsDataDataURL(image);
+    reader.readAsDataURL(userImage.files[0]);
 
   });
 }
