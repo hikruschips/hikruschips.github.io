@@ -3,6 +3,7 @@ var canvas = document.getElementById('canvas');
 
 var texture;
 var material;
+var renderer;
 (function(){
 
   
@@ -42,7 +43,7 @@ var material;
 
   /*render*/
 
-  var renderer = new THREE.WebGLRenderer();
+  renderer = new THREE.WebGLRenderer();
   renderer.setSize(width,height);
   renderer.setClearColor({color: 0x000000});
   document.getElementById('canvas').appendChild(renderer.domElement);
@@ -118,7 +119,15 @@ function addEventListeners(){
     reader.readAsDataURL(userImage.files[0]);
 
   });
+
+
+
+  document.getElementById('captureButton').addEventListener('onclick',function(){
+    saveAsImage(renderer);
+  });
 }
+
+
 
 function setPerspective(){
 
@@ -154,6 +163,37 @@ function setFlat(){
 
 
 }
+
+function saveAsImage(renderer) {
+  //saves image 
+        var imgData, imgNode;
+
+        try {
+            var strMime = "image/jpeg";
+            imgData = renderer.domElement.toDataURL(strMime);
+
+            saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
+
+        } catch (e) {
+            console.log(e);
+            return;
+        }
+
+    }
+
+//var a = function doesnt use directly
+var saveFile = function (strData, filename) {
+        var link = document.createElement('a');
+        if (typeof link.download === 'string') {
+            document.body.appendChild(link); //Firefox requires the link to be in the body
+            link.download = filename;
+            link.href = strData;
+            link.click();
+            document.body.removeChild(link); //remove the link when done
+        } else {
+            location.replace(uri);
+        }
+    }
 
 
 
