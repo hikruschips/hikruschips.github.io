@@ -43,7 +43,8 @@ var renderer;
 
   /*render*/
 
-  renderer = new THREE.WebGLRenderer();
+  //antialias removes jaggies
+  renderer = new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer: true});
   renderer.setSize(width,height);
   renderer.setClearColor({color: 0x000000});
   document.getElementById('canvas').appendChild(renderer.domElement);
