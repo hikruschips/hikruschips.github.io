@@ -97,7 +97,7 @@ function addEventListeners(){
   
   image.onload = function(){
 
-    texture = new THREE.TextureLoader().load(image.src);
+    material.map = new THREE.TextureLoader().load(image.src);
     texture.needsUpdate = true;
     material.needsUpdate = true;
     material.map.needsUpdate = true;
