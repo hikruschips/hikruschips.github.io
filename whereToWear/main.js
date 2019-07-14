@@ -184,9 +184,12 @@ function saveAsImage(renderer) {
             renderer.setSize(imageWidth,imageHeight);
             renderer.render(scene,camera);
 
-            imgData = renderer.domElement.toDataURL(strMime);
+            //imgData = renderer.domElement.toDataURL(strMime);
 
-            saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
+            imgData = renderer.domElement.toBlob(function(blob){
+              saveAs(blob,"Final");
+            });
+            //saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
 
         } catch (e) {
             console.log(e);
