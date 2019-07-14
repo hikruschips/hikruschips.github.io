@@ -4,6 +4,10 @@ var canvas = document.getElementById('canvas');
 var texture;
 var material;
 var renderer;
+var imageHeight;
+var imageWidth;
+var scene;
+
 (function(){
 
   
@@ -14,7 +18,7 @@ var renderer;
 
   /*scene*/
 
-  var scene = new THREE.Scene();
+  scene = new THREE.Scene();
 
   /*mesh*/
 
@@ -100,6 +104,8 @@ function addEventListeners(){
   image.onload = function(){
 
     material.map = new THREE.TextureLoader().load(image.src);
+    imageHeight = image.height;
+    imageWidth = image.width;
     texture.needsUpdate = true;
     material.needsUpdate = true;
     material.map.needsUpdate = true;
@@ -172,6 +178,12 @@ function saveAsImage(renderer) {
         try {
             var strDownloadMime = "image/octet-stream"; 
             var strMime = "image/jpeg";
+
+            camera.aspect = imageWidth/imageHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(imageWidth,imageHeight);
+            renderer.render(scene,camera);
+
             imgData = renderer.domElement.toDataURL(strMime);
 
             saveFile(imgData.replace(strMime, strDownloadMime), "test.jpg");
