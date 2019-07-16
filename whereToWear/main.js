@@ -187,7 +187,7 @@ function littlePlanetSetting(){
   littlePlanetCanvas();
   littlePlanetBool = true;
 }
-function noLittlePlanetSetting(){
+function notLittlePlanetSetting(){
   notLittlePlanetCanvas();
   littlePlanetBool = false;
 }
