@@ -150,6 +150,18 @@ function setLittlePlanet(){
 
   //canvas.innerHTML='';
   //for test panolens
+
+  PANOLENS.LittlePlanet.prototype.createMaterial = function ( size )  {
+  var uniforms = PANOLENS.StereographicShader.uniforms;
+  uniforms.zoom.value = size;
+  return new THREE.ShaderMaterial( {
+    uniforms: uniforms,
+    vertexShader: PANOLENS.StereographicShader.vertexShader,
+    fragmentShader: PANOLENS.StereographicShader.fragmentShader,
+    side: THREE.DoubleSide
+  } );
+};
+
   var canvas2 = document.getElementById('canvas2');
   var viewer = new PANOLENS.Viewer( { controlBar: false,container: canvas} );
   var littlePlanet = new PANOLENS.ImageLittlePlanet('https://s3-ap-northeast-1.amazonaws.com/hikruschips/vr/goldenLouvre.jpg');
