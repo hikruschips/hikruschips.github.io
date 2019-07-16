@@ -156,9 +156,9 @@ function setLittlePlanet(){
 
   var canvas2 = document.getElementById('canvas2');
   var viewer = new PANOLENS.Viewer( { container: canvas} );
-  console.log(imgSrc);
+  console.log(viewer);
   var littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
-  console.log('littlePlanet: '+littlePlanet);
+  viewer.add(littlePlanet);
   
 }
 
