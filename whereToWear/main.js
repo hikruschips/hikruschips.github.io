@@ -1,12 +1,13 @@
 var camera;
 var canvas = document.getElementById('canvas');
-
+var canvas2 = document.getElementById('canvas2');//for little planet
 var texture;
 var material;
 var renderer;
 var imageHeight;
 var imageWidth;
 var scene;
+var littlePlanetBool = false;
 
 var imgSrc = 'https://hikruschips.github.io/whereToWear/goldenLouvre.jpg';
 
@@ -145,6 +146,8 @@ function addCaptureButtonEventListener(){
 
 function setPerspective(){
 
+  notLittlePlanetSetting();
+  littlePlanetBool = false;
   camera.fov = 75;
   camera.position.set(0,0,0.1);
   camera.updateProjectionMatrix();
@@ -153,7 +156,8 @@ function setPerspective(){
 
 function setLittlePlanet(){
 
-
+  littlePlanetSetting();
+  littlePlanetBool = true;
   var canvas2 = document.getElementById('canvas2');
   var viewer = new PANOLENS.Viewer( { container: canvas} );
   console.log(viewer);
@@ -162,7 +166,10 @@ function setLittlePlanet(){
   
 }
 
+
 function setFishEye(){
+
+  notLittlePlanetSetting();
 
 
   camera.fov = 140;
@@ -172,8 +179,26 @@ function setFishEye(){
 }
 
 function setFlat(){
+notLittlePlanetCanvas();
 
+}
 
+function littlePlanetSetting(){
+  littlePlanetCanvas();
+  littlePlanetBool = true;
+}
+function noLittlePlanetSetting(){
+  notLittlePlanetCanvas();
+  littlePlanetBool = false;
+}
+
+notLittlePlanetCanvas = function(){
+  canvas.style.display = 'block';
+  canvas2.style.display = 'none';
+}
+littlePlanetCanvas = function(){
+  canvas.style.display = 'none';
+  canvas2.style.display = 'block';
 }
 
 function saveAsImage(renderer) {
