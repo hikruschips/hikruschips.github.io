@@ -157,9 +157,9 @@ function setPerspective(){
 function setLittlePlanet(){
 
   littlePlanetSetting();
-  littlePlanetBool = true;
+  
   var canvas2 = document.getElementById('canvas2');
-  var viewer = new PANOLENS.Viewer( { container: canvas} );
+  var viewer = new PANOLENS.Viewer( { container: canvas2} );
   console.log(viewer);
   var littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
   viewer.add(littlePlanet);
