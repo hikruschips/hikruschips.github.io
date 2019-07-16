@@ -8,6 +8,8 @@ var imageHeight;
 var imageWidth;
 var scene;
 
+var imgSrc = 'https://hikruschips.github.io/whereToWear/goldenLouvre.jpg';
+
 (function(){
 
   
@@ -25,7 +27,7 @@ var scene;
   var geometry = new THREE.SphereGeometry( 5, 60, 40 );
     geometry.scale( - 1, 1, 1 );
 
-  texture = new THREE.TextureLoader().load('https://hikruschips.github.io/whereToWear/goldenLouvre.jpg') /*THREE.ImageUtils.loadTexture( 'https://github.com/hikruschips/vr/blob/master/hongkong-stereo.jpg' )*/
+  texture = new THREE.TextureLoader().load(imgSrc) /*THREE.ImageUtils.loadTexture( 'https://github.com/hikruschips/vr/blob/master/hongkong-stereo.jpg' )*/
   material = new THREE.MeshBasicMaterial( {
        map: texture
   } );
@@ -97,8 +99,12 @@ var scene;
 
 function addEventListeners(){
 
+  addUserImageEventListener();
+  addCaptureButtonEventListener();
+  
+}
 
-
+function addUserImageEventListener(){
   var image = document.createElement('img');
   
   image.onload = function(){
@@ -122,13 +128,14 @@ function addEventListeners(){
 
     reader.onload = function(e){
       image.src = e.target.result;
+      imgSrc = e.target.result;
     }
     reader.readAsDataURL(userImage.files[0]);
 
   });
+}
 
-
-
+function addCaptureButtonEventListener(){
   document.getElementById('captureButton').addEventListener('click',function(){
     saveAsImage(renderer);
   });
@@ -146,26 +153,12 @@ function setPerspective(){
 
 function setLittlePlanet(){
 
-  
-
-  //canvas.innerHTML='';
-  //for test panolens
-
-  PANOLENS.LittlePlanet.prototype.createMaterial = function ( size )  {
-  var uniforms = PANOLENS.StereographicShader.uniforms;
-  uniforms.zoom.value = size;
-  return new THREE.ShaderMaterial( {
-    uniforms: uniforms,
-    vertexShader: PANOLENS.StereographicShader.vertexShader,
-    fragmentShader: PANOLENS.StereographicShader.fragmentShader,
-    side: THREE.DoubleSide
-  } );
-};
 
   var canvas2 = document.getElementById('canvas2');
-  var viewer = new PANOLENS.Viewer( { controlBar: false,container: canvas} );
-  var littlePlanet = new PANOLENS.ImageLittlePlanet('https://s3-ap-northeast-1.amazonaws.com/hikruschips/vr/goldenLouvre.jpg');
-
+  var viewer = new PANOLENS.Viewer( { container: canvas} );
+  console.log(imgSrc);
+  var littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
+  console.log('littlePlanet: '+littlePlanet);
   
 }
 
