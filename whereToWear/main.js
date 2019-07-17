@@ -168,12 +168,12 @@ function setLittlePlanet(){
   littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);//incase ingsrc changed from previous first one and then little planet called
   viewer.add(littlePlanet);
 
-}
+}else{
 
   viewer.remove(littlePlanet);//remove old little planet
   littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
   viewer.add(littlePlanet);//add new little planet
-
+}
   
 }
 
