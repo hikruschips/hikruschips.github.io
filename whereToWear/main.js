@@ -89,7 +89,7 @@ var littlePlanet;
 
 
   function onWindowResize() {
-    canvas2.setSize();
+    
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
