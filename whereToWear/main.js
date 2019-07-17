@@ -1,6 +1,6 @@
 var camera;
 var canvas = document.getElementById('canvas');
-var canvas2 = document.getElementById('canvas2');//for little planet
+//var canvas2 = document.getElementById('canvas2');//for little planet
 var texture;
 var material;
 var renderer;
@@ -56,7 +56,12 @@ var littlePlanet;
   renderer = new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer: true});
   renderer.setSize(width,height);
   renderer.setClearColor({color: 0x000000});
-  document.getElementById('canvas').appendChild(renderer.domElement);
+
+
+  viewer = new PANOLENS.Viewer( { container: canvas,renderer:renderer} );
+
+
+  //document.getElementById('canvas').appendChild(renderer.domElement);
   
 
   renderer.render(scene,camera);
@@ -161,7 +166,8 @@ function setLittlePlanet(){
 
   littlePlanetSetting();
   
-  if(viewer==null){
+  
+  /*if(viewer==null){
     console.log('null');
   viewer = new PANOLENS.Viewer( { container: canvas2} );
   //littlePlanet already set
@@ -173,7 +179,7 @@ function setLittlePlanet(){
   viewer.remove(littlePlanet);//remove old little planet
   littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
   viewer.add(littlePlanet);//add new little planet
-}
+}*/
   
 }
 
