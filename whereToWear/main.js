@@ -8,8 +8,10 @@ var imageHeight;
 var imageWidth;
 var scene;
 var littlePlanetBool = false;
+var viewer;
 
 var imgSrc = 'https://hikruschips.github.io/whereToWear/goldenLouvre.jpg';
+var littlePlanet;
 
 (function(){
 
@@ -87,6 +89,7 @@ var imgSrc = 'https://hikruschips.github.io/whereToWear/goldenLouvre.jpg';
 
 
   function onWindowResize() {
+    canvas2.setSize();
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -158,11 +161,19 @@ function setLittlePlanet(){
 
   littlePlanetSetting();
   
-  var canvas2 = document.getElementById('canvas2');
-  var viewer = new PANOLENS.Viewer( { container: canvas2} );
-  console.log(viewer);
-  var littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
+  if(viewer==null){
+    console.log('null');
+  viewer = new PANOLENS.Viewer( { container: canvas2} );
+  //littlePlanet already set
+  littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);//incase ingsrc changed from previous first one and then little planet called
   viewer.add(littlePlanet);
+
+}
+
+  viewer.remove(littlePlanet);//remove old little planet
+  littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
+  viewer.add(littlePlanet);//add new little planet
+
   
 }
 
