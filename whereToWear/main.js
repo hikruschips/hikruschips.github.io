@@ -127,6 +127,7 @@ function addUserImageEventListener(){
     material.needsUpdate = true;
     material.map.needsUpdate = true;
 
+    
 
 
   };
@@ -140,6 +141,8 @@ function addUserImageEventListener(){
     reader.onload = function(e){
       image.src = e.target.result;
       imgSrc = e.target.result;
+      littlePlanet.updateTexture(new THREE.TextureLoader().load(imgSrc));
+      littlePlanet.reset();
     }
     reader.readAsDataURL(userImage.files[0]);
 
