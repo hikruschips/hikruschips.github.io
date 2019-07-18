@@ -166,7 +166,7 @@ function setLittlePlanet(){
 
   littlePlanetSetting();
   
-  
+
   /*if(viewer==null){
     console.log('null');
   viewer = new PANOLENS.Viewer( { container: canvas2} );
@@ -186,9 +186,6 @@ function setLittlePlanet(){
 
 function setFishEye(){
 
-  notLittlePlanetSetting();
-
-
   camera.fov = 140;
   camera.position.set(0,0,0.1);/*position reset if it was littlePlanetBefore*/
   camera.updateProjectionMatrix();
@@ -196,27 +193,19 @@ function setFishEye(){
 }
 
 function setFlat(){
-notLittlePlanetCanvas();
+
 
 }
 
 function littlePlanetSetting(){
-  littlePlanetCanvas();
+  
   littlePlanetBool = true;
 }
 function notLittlePlanetSetting(){
-  notLittlePlanetCanvas();
+  
   littlePlanetBool = false;
 }
 
-notLittlePlanetCanvas = function(){
-  canvas.style.display = 'block';
-  canvas2.style.display = 'none';
-}
-littlePlanetCanvas = function(){
-  canvas.style.display = 'none';
-  canvas2.style.display = 'block';
-}
 
 function saveAsImage(renderer) {
   //saves image 
