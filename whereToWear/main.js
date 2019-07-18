@@ -57,8 +57,8 @@ var littlePlanet;
   renderer.setSize(width,height);
   renderer.setClearColor({color: 0x000000});
 
-
-  viewer = new PANOLENS.Viewer( { controlBar: false} );
+  canvas.setAttribute('style','width:100%;height:100%;');
+  viewer = new PANOLENS.Viewer( { container:canvas,controlBar: false} );
 
   littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
   viewer.add(littlePlanet);
