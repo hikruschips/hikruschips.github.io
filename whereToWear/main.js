@@ -58,8 +58,10 @@ var littlePlanet;
   renderer.setClearColor({color: 0x000000});
 
 
-  viewer = new PANOLENS.Viewer( { container: canvas,renderer:renderer} );
+  viewer = new PANOLENS.Viewer( { controlBar: false} );
 
+  littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
+  viewer.add(littlePlanet);
 
   //document.getElementById('canvas').appendChild(renderer.domElement);
   
@@ -180,6 +182,9 @@ function setLittlePlanet(){
   littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
   viewer.add(littlePlanet);//add new little planet
 }*/
+
+littlePlanet.updateTexture(new THREE.TextureLoader().load(imgSrc));
+littlePlanet.reset();
   
 }
 
