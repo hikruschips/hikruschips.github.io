@@ -82,8 +82,7 @@ var littlePlanet;
 
   })
 
-  cameraMode.onchange();
-
+  cameraMode.dispatchEvent(new Event('change'));
   var controls = new THREE.OrbitControls(camera,renderer.domElement);
 
   function render(){
