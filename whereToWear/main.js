@@ -57,7 +57,7 @@ var littlePlanet;
   renderer.setSize(width,height);
   renderer.setClearColor({color: 0x000000});
 
-  panolensCanvas.setAttribute('style','width:100%;height:100%;');
+  
   viewer = new PANOLENS.Viewer( { container:panolensCanvas,controlBar: false} );
 
   littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
@@ -210,7 +210,7 @@ function littlePlanetSetting(){
   
     panolensCanvas.style.display='block';
     threejsCanvas.style.display='none';
-
+    panolensCanvas.setAttribute('style','width:100%;height:100%;');
   littlePlanetBool = true;
 }
 function notLittlePlanetSetting(){
