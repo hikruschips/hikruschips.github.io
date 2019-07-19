@@ -1,6 +1,6 @@
 var camera;
-var canvas = document.getElementById('canvas');
-//var canvas2 = document.getElementById('canvas2');//for little planet
+var threejsCanvas = document.getElementById('threejsCanvas');
+var panolensCanvas = document.getElementById('panolensCanvas');
 var texture;
 var material;
 var renderer;
@@ -57,13 +57,13 @@ var littlePlanet;
   renderer.setSize(width,height);
   renderer.setClearColor({color: 0x000000});
 
-  canvas.setAttribute('style','width:100%;height:100%;');
-  viewer = new PANOLENS.Viewer( { container:canvas,controlBar: false} );
+  panolensCanvas.setAttribute('style','width:100%;height:100%;');
+  viewer = new PANOLENS.Viewer( { container:panolensCanvas,controlBar: false} );
 
   littlePlanet = new PANOLENS.ImageLittlePlanet(imgSrc);
   viewer.add(littlePlanet);
 
-  //document.getElementById('canvas').appendChild(renderer.domElement);
+  threejsCanvas.appendChild(renderer.domElement);
   
 
   renderer.render(scene,camera);
@@ -81,6 +81,8 @@ var littlePlanet;
     else if(value=='flat'){};
 
   })
+
+  cameraMode.onchange();
 
   var controls = new THREE.OrbitControls(camera,renderer.domElement);
 
@@ -193,7 +195,7 @@ littlePlanet.reset();
 
 
 function setFishEye(){
-
+  notLittlePlanetSetting();
   camera.fov = 140;
   camera.position.set(0,0,0.1);/*position reset if it was littlePlanetBefore*/
   camera.updateProjectionMatrix();
@@ -201,16 +203,21 @@ function setFishEye(){
 }
 
 function setFlat(){
-
+  notLittlePlanetSetting();
 
 }
 
 function littlePlanetSetting(){
   
+    panolensCanvas.style.display='block';
+    threejsCanvas.style.display='none';
+
   littlePlanetBool = true;
 }
 function notLittlePlanetSetting(){
   
+  panolensCanvas.style.display='none';
+    threejsCanvas.style.display='block';
   littlePlanetBool = false;
 }
 
