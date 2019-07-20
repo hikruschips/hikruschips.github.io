@@ -16,12 +16,18 @@ var littlePlanetBool = false;
 var viewer;
 
 var imgSrc = 'https://hikruschips.github.io/whereToWear/goldenLouvre.jpg';
-var img = new Image();
+
+function setImgSizeValFromSrc(){
+  var img = new Image();
 img.onload = function(){
-  imgWidth = this.width;
-  imgHeight = this.height;
+  setImgSizeVal(this.width,this.height);
 }
 img.src = imgSrc;
+}
+
+setImgSizeValFromSrc();
+
+
 var littlePlanet;
 
 
@@ -144,8 +150,7 @@ function addUserImageEventListener(){
   image.onload = function(){
 
     material.map = new THREE.TextureLoader().load(image.src);
-    imgHeight = image.height;
-    imgWidth = image.width;
+    setImgSizeVal(image.width,image.height);
     
     texture.needsUpdate = true;
     material.needsUpdate = true;
@@ -257,6 +262,10 @@ function notLittlePlanetSetting(){
   littlePlanetBool = false;
 }
 
+function setImgSizeVal(width,height){
+  imgWidth = imgWidth>4096?4096:imgWidth;
+  imgHeight = imgWidth>4096?(4096/(imgWidth/imgHeight)):imgHeight
+}
 
 function saveAsImage(renderer) {
   //saves image 
