@@ -9,6 +9,8 @@ var imageWidth;
 var currentSceneStr = 'sphere';
 var sphereScene;
 var flatScene;
+var flatMaterial;
+var sprite;
 
 var littlePlanetBool = false;
 var viewer;
@@ -39,8 +41,9 @@ var littlePlanet;
        map: texture
   } );
 
-  var flatMaterial = new THREE.SpriteMaterial({map:texture});
-  var sprite = new THREE.Sprite(flatMaterial);
+  flatMaterial = new THREE.SpriteMaterial({map:texture});
+  sprite = new THREE.Sprite(flatMaterial);
+  sprite.scale.set(imageWidth,imageHeight,1.0);
   flatScene.add(sprite);
 
 
@@ -214,11 +217,13 @@ function setFishEye(){
 
 function setFlat(){
   notLittlePlanetSetting();
+
+  camera.position.set(0,0,5);
   currentSceneStr = 'flat';
 }
 
 function getCurrentScene(){
-  if(currentSceneStr = 'flat'){
+  if(currentSceneStr == 'flat'){
     return flatScene;
   }else{
     return sphereScene;
