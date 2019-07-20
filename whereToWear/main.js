@@ -88,7 +88,7 @@ panolensCanvas.setAttribute('style','displaywidth:100%;height:100%;');
     if(value =='fisheye'){setFishEye();}
     else if(value =='perspective'){setPerspective();}
     else if(value=='littlePlanet'){setLittlePlanet();}
-    else if(value=='flat'){};
+    else if(value=='flat'){setFlat();};
 
   })
 
