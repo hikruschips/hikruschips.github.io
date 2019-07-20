@@ -262,9 +262,9 @@ function notLittlePlanetSetting(){
   littlePlanetBool = false;
 }
 
-function setImgSizeVal(imgWidth,imgHeight){
-  imgWidth = imgWidth>4096?4096:imgWidth;
-  imgHeight = imgWidth>4096?(4096/(imgWidth/imgHeight)):imgHeight
+function setImgSizeVal(width,height){
+  imgWidth = width>4096?4096:width;
+  imgHeight = width>4096?(4096/(width/height)):height;
 }
 
 function saveAsImage(renderer) {
