@@ -141,7 +141,13 @@ function addEventListeners(){
 
   addUserImageEventListener();
   addCaptureButtonEventListener();
-  
+  addFrontBackEventListener();
+}
+
+function addFrontBackEventListener(){
+  document.getElementById('frontBack').addEventListener('click',function(){
+    frontBack();
+  })
 }
 
 function addUserImageEventListener(){
@@ -223,6 +229,11 @@ littlePlanet.reset();
   
 }
 
+
+function frontBack(){
+  camera.translateZ( -1 );
+  camera.updateProjectionMatrix();
+}
 
 function setFishEye(){
   notLittlePlanetSetting();
