@@ -210,7 +210,8 @@ function littlePlanetSetting(){
   
     panolensCanvas.style.display='block';
     threejsCanvas.style.display='none';
-    panolensCanvas.setAttribute('style','width:100%;height:100%;');
+    window.dispatchEvent(new Event('resize'));// to resize the canvs inside of panolens canvas div
+    //panolensCanvas.setAttribute('style','displaywidth:100%;height:100%;');
   littlePlanetBool = true;
 }
 function notLittlePlanetSetting(){
