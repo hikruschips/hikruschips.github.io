@@ -6,7 +6,10 @@ var material;
 var renderer;
 var imageHeight;
 var imageWidth;
-var scene;
+var currentScene;
+var sphereScene;
+var flatScene;
+
 var littlePlanetBool = false;
 var viewer;
 
@@ -23,7 +26,7 @@ var littlePlanet;
 
   /*scene*/
 
-  scene = new THREE.Scene();
+ spereScene = new THREE.Scene();
 
   /*mesh*/
 
@@ -35,9 +38,14 @@ var littlePlanet;
        map: texture
   } );
 
+  var flatMaterial = new THREE.SpriteMaterial({map:texture});
+  var sprite = new THREE.Sprite(flatMaterial);
+  flatScene.add(sprite);
+
+
 
   var sphere = new THREE.Mesh( geometry, material );
-  scene.add( sphere );
+ sphereScene.add( sphere );
 
 
   /*camera*/
@@ -66,8 +74,9 @@ panolensCanvas.setAttribute('style','displaywidth:100%;height:100%;');
 
   threejsCanvas.appendChild(renderer.domElement);
   
+  currentScene = sphereScene;
 
-  renderer.render(scene,camera);
+  renderer.render(currentScene,camera);
 
   /*control*/
 
@@ -91,7 +100,7 @@ panolensCanvas.setAttribute('style','displaywidth:100%;height:100%;');
     sphere.rotation.y += 0.05 * Math.PI/180;
     /*画面リサイズ対応*/
     window.addEventListener( 'resize', onWindowResize, false );
-    renderer.render(scene,camera);
+    renderer.render(currentScene,camera);
     controls.update();
   }
   render();
@@ -199,7 +208,7 @@ function setFishEye(){
   camera.fov = 140;
   camera.position.set(0,0,0.1);/*position reset if it was littlePlanetBefore*/
   camera.updateProjectionMatrix();
-
+  currentScene = flatScene;
 }
 
 function setFlat(){
@@ -234,7 +243,7 @@ function saveAsImage(renderer) {
             camera.aspect = imageWidth/imageHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(imageWidth,imageHeight);
-            renderer.render(scene,camera);
+            renderer.render(currentScene,camera);
 
             //imgData = renderer.domElement.toDataURL(strMime);
 
