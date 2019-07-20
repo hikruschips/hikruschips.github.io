@@ -6,7 +6,7 @@ var material;
 var renderer;
 var imageHeight;
 var imageWidth;
-var currentScene;
+var currentSceneStr = 'sphere';
 var sphereScene;
 var flatScene;
 
@@ -15,6 +15,7 @@ var viewer;
 
 var imgSrc = 'https://hikruschips.github.io/whereToWear/goldenLouvre.jpg';
 var littlePlanet;
+
 
 (function(){
 
@@ -76,7 +77,7 @@ panolensCanvas.setAttribute('style','displaywidth:100%;height:100%;');
   
   currentScene = sphereScene;
 
-  renderer.render(currentScene,camera);
+  renderer.render(getCurrentScene(),camera);
 
   /*control*/
 
@@ -100,7 +101,7 @@ panolensCanvas.setAttribute('style','displaywidth:100%;height:100%;');
     sphere.rotation.y += 0.05 * Math.PI/180;
     /*画面リサイズ対応*/
     window.addEventListener( 'resize', onWindowResize, false );
-    renderer.render(currentScene,camera);
+    renderer.render(getCurrentScene(),camera);
     controls.update();
   }
   render();
@@ -175,7 +176,7 @@ function setPerspective(){
   camera.fov = 75;
   camera.position.set(0,0,0.1);
   camera.updateProjectionMatrix();
-
+  currentSceneStr = 'sphere';
 }
 
 function setLittlePlanet(){
@@ -208,12 +209,20 @@ function setFishEye(){
   camera.fov = 140;
   camera.position.set(0,0,0.1);/*position reset if it was littlePlanetBefore*/
   camera.updateProjectionMatrix();
-  currentScene = flatScene;
+  currentSceneStr = 'sphere';
 }
 
 function setFlat(){
   notLittlePlanetSetting();
+  currentSceneStr = 'flat';
+}
 
+function getCurrentScene(){
+  if(currentSceneStr = 'flat'){
+    return flatScene;
+  }else{
+    return sphereScene;
+  }
 }
 
 function littlePlanetSetting(){
@@ -243,7 +252,7 @@ function saveAsImage(renderer) {
             camera.aspect = imageWidth/imageHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(imageWidth,imageHeight);
-            renderer.render(currentScene,camera);
+            renderer.render(getCurrentScene(),camera);
 
             //imgData = renderer.domElement.toDataURL(strMime);
 
