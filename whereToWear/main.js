@@ -4,8 +4,8 @@ var panolensCanvas = document.getElementById('panolensCanvas');
 var texture;
 var material;
 var renderer;
-var imageHeight;
-var imageWidth;
+var imgHeight;
+var imgWidth;
 var currentSceneStr = 'sphere';
 var sphereScene;
 var flatScene;
@@ -16,6 +16,12 @@ var littlePlanetBool = false;
 var viewer;
 
 var imgSrc = 'https://hikruschips.github.io/whereToWear/goldenLouvre.jpg';
+var img = new Image();
+img.onload = function(){
+  imgWidth = this.width;
+  imgHeight = this.height;
+}
+img.src = imgSrc;
 var littlePlanet;
 
 
@@ -43,7 +49,7 @@ var littlePlanet;
 
   flatMaterial = new THREE.SpriteMaterial({map:texture});
   sprite = new THREE.Sprite(flatMaterial);
-  sprite.scale.set(imageWidth,imageHeight,1.0);
+  sprite.scale.set(imgWidth,imgHeight,1.0);
   flatScene.add(sprite);
 
 
@@ -136,11 +142,14 @@ function addUserImageEventListener(){
   image.onload = function(){
 
     material.map = new THREE.TextureLoader().load(image.src);
-    imageHeight = image.height;
-    imageWidth = image.width;
+    imgHeight = image.height;
+    imgWidth = image.width;
+    
     texture.needsUpdate = true;
     material.needsUpdate = true;
     material.map.needsUpdate = true;
+    flatMaterial.needsUpdate = true;
+    flatMaterial.map.needsUpdate = true;
 
     
 
@@ -254,9 +263,9 @@ function saveAsImage(renderer) {
             var strDownloadMime = "image/octet-stream"; 
             var strMime = "image/jpeg";
 
-            camera.aspect = imageWidth/imageHeight;
+            camera.aspect = imgWidth/imgHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(imageWidth,imageHeight);
+            renderer.setSize(imgWidth,imgHeight);
             renderer.render(getCurrentScene(),camera);
 
             //imgData = renderer.domElement.toDataURL(strMime);
