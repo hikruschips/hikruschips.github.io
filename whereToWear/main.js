@@ -262,7 +262,7 @@ function notLittlePlanetSetting(){
   littlePlanetBool = false;
 }
 
-function setImgSizeVal(width,height){
+function setImgSizeVal(imgWidth,imgHeight){
   imgWidth = imgWidth>4096?4096:imgWidth;
   imgHeight = imgWidth>4096?(4096/(imgWidth/imgHeight)):imgHeight
 }
