@@ -25,6 +25,8 @@ img.src = imgSrc;
 var littlePlanet;
 
 
+
+
 (function(){
 
   
@@ -266,7 +268,9 @@ function saveAsImage(renderer) {
 
             camera.aspect = imgWidth/imgHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(imgWidth,imgHeight);
+
+
+            renderer.setSize(imgWidth>4096?4096:imgWidth,imgWidth>4096?(4096/(imgWidth/imgHeight)):imgHeight);
             renderer.render(getCurrentScene(),camera);
 
             //imgData = renderer.domElement.toDataURL(strMime);
@@ -296,6 +300,7 @@ var saveFile = function (strData, filename) {
             location.replace(uri);
         }
     }
+
 
 
 
