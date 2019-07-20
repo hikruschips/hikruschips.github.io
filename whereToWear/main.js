@@ -107,7 +107,7 @@ panolensCanvas.setAttribute('style','displaywidth:100%;height:100%;');
 
   function render(){
     requestAnimationFrame(render);
-    sphere.rotation.y += 0.05 * Math.PI/180;
+    //sphere.rotation.y += 0.05 * Math.PI/180;
     /*画面リサイズ対応*/
     window.addEventListener( 'resize', onWindowResize, false );
     renderer.render(getCurrentScene(),camera);
@@ -228,6 +228,7 @@ function setFlat(){
   notLittlePlanetSetting();
 
   camera.position.set(0,0,5);
+  sprite.scale.set(imgWidth,imgHeight,1.0);
   currentSceneStr = 'flat';
 }
 
