@@ -150,6 +150,7 @@ function addUserImageEventListener(){
   image.onload = function(){
 
     material.map = new THREE.TextureLoader().load(image.src);
+    flatMaterial.map = new THREE.TextureLoader().load(image.src);
     setImgSizeVal(image.width,image.height);
     
     texture.needsUpdate = true;
