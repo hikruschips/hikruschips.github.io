@@ -27,7 +27,7 @@ var littlePlanet;
   /*scene*/
 
  spereScene = new THREE.Scene();
-
+ flatScene = new THREE.Scene();
   /*mesh*/
 
   var geometry = new THREE.SphereGeometry( 5, 60, 40 );
