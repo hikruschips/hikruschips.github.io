@@ -7,7 +7,7 @@ uploadPicture.addEventListener('change',function(){
 	var reader = new FileReader();
 
 	reader.onload = function(e){
-		gallery.innerHTML+='<img width=\'300\' height =\'300\' src=\''+e.target.result+'\'>';
+		gallery.innerHTML+='<img width=\'400\' height =\'450\' src=\''+e.target.result+'\'>';
 	}
 
 	reader.readAsDataURL(uploadPicture.files[0]);
