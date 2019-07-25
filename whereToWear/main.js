@@ -246,7 +246,7 @@ function setFishEye(){
 function setFlat(){
   notLittlePlanetSetting();
 
-  camera.position.set(0,0,5);
+  camera.position.set(0,0,1000);
   sprite.scale.set(imgWidth,imgHeight,1.0);
   currentSceneStr = 'flat';
 }
