@@ -8,19 +8,18 @@
   <a-scene embedded arjs='debugUIEnabled:false;sourceType: webcam;'>
     <!-- create your content here. just a box for now -->
     <!--<a-box color = '#FEFEFF'depth='2' height='2' width='2' material='opacity: 0.8;'></a-box>-->
-
-<a-pointcloud 
-        scale="0.2 0.2 0.2" 
-        position="0 0 0" 
-        src="url(temizusya_less2.ply)" 
-        size="0.05"
-        depthWrite="false">
-</a-pointcloud>
 	
 <!-- use your gltf model -->
 
 <a-marker preset='custom'type ='pattern' url='https://hikruschips.github.io/arjs_res/temizusya.patt'>
-
+<a-pointcloud 
+        scale="0.2 0.2 0.2" 
+        position="0 0 0" 
+        rotation='270 180 0'
+        src="url(temizusya_less2.ply)" 
+        size="0.05"
+        depthWrite="false">
+</a-pointcloud>
 </a-marker>
     <!-- define a camera which will move according to the marker position -->
     
