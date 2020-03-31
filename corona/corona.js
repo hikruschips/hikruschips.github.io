@@ -29,29 +29,34 @@
 	function start(){
 		window.addEventListener('mousedown',function(e){
 
-			console.log(e.pageX)
-			console.log(player.style.marginLeft)
-			console.log(player.style.marginTop)
-			console.log(parseInt(player.style.marginLeft.replace('.px','')))
-			console.log(parseInt(player.style.marginTop.replace('.px','')))
-			if(parseInt(player.style.marginLeft.replace('.px',''))>=e.pageX){
-				console.log(1)
-				player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))+20;
-			}
-			if(parseInt(player.style.marginLeft.replace('.px',''))<e.pageX){
-				console.log(2)
-				player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))-20;
-			}
-			if(parseInt(player.style.marginTop.replace('.px',''))>=e.pageY){
-				console.log(3)
-				player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))+20;
-			}
-			if(parseInt(player.style.marginTop.replace('.px',''))<e.pageY){
-				console.log(4)
-				player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))-20;
-			}
-			// player.style.marginLeft = e.pageX;
-			// player.style.marginTop = e.pageY;
+x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			player.style.marginLeft = x
+player.style.marginTop = y
+// coronaAtTop=0;
+			// console.log(e.pageX)
+			// console.log(player.style.marginLeft)
+			// console.log(player.style.marginTop)
+			// console.log(parseInt(player.style.marginLeft.replace('.px','')))
+			// console.log(parseInt(player.style.marginTop.replace('.px','')))
+			// if(parseInt(player.style.marginLeft.replace('.px',''))>=e.pageX){
+			// 	console.log(1)
+			// 	player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))+20;
+			// }
+			// if(parseInt(player.style.marginLeft.replace('.px',''))<e.pageX){
+			// 	console.log(2)
+			// 	player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))-20;
+			// }
+			// if(parseInt(player.style.marginTop.replace('.px',''))>=e.pageY){
+			// 	console.log(3)
+			// 	player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))+20;
+			// }
+			// if(parseInt(player.style.marginTop.replace('.px',''))<e.pageY){
+			// 	console.log(4)
+			// 	player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))-20;
+			// }
+			// // player.style.marginLeft = e.pageX;
+			// // player.style.marginTop = e.pageY;
 			
 		})
 		window.addEventListener('mouseup',function(e){
@@ -59,18 +64,23 @@
 			// corona.style.marginLeft = false;
 		})
 		window.addEventListener('touchstart',function(e){
-			if(parseInt(player.style.marginLeft.replace('.px',''))>=e.pageX){
-				player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))+20;
-			}
-			if(parseInt(player.style.marginLeft.replace('.px',''))<e.pageX){
-				player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))-20;
-			}
-			if(parseInt(player.style.marginTop.replace('.px',''))>=e.pageY){
-				player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))+20;
-			}
-			if(parseInt(player.style.marginTop.replace('.px',''))<e.pageY){
-				player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))-20;
-			}
+
+x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			player.style.marginLeft = x
+player.style.marginTop = y
+			// if(parseInt(player.style.marginLeft.replace('.px',''))>=e.pageX){
+			// 	player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))+20;
+			// }
+			// if(parseInt(player.style.marginLeft.replace('.px',''))<e.pageX){
+			// 	player.style.marginLeft=parseInt(player.style.marginLeft.replace('.px',''))-20;
+			// }
+			// if(parseInt(player.style.marginTop.replace('.px',''))>=e.pageY){
+			// 	player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))+20;
+			// }
+			// if(parseInt(player.style.marginTop.replace('.px',''))<e.pageY){
+			// 	player.style.marginTop=parseInt(player.style.marginTop.replace('.px',''))-20;
+			// }
 		})
 		window.addEventListener('touchend',function(e){
 			// corona.style.marginTop.x = false;
@@ -89,6 +99,8 @@
 //     }
 // },10)
 		coronaInterval=setInterval(function(){
+			console.log(player.style.marginLeft)
+			console.log(player.style.marginTop)
 if(coronaAtTop==1){
 // var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-30]
 
@@ -125,12 +137,25 @@ if(corona.style.marginTop-30>screen.height){
 if(candy.style.marginTop-30>screen.height){
 	candyAtTop=1;
 }
+
+if(collisionEntity(corona,player)){
+	console.log(collision)
+	player.src=happyGirlSrc
+}
 corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
 			//console.log(corona.style.marginTop)
 			candy.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
 			//console.log(corona.style.marginTop)
 
 		},50)
+	}
+
+function collisionEntity(en1,en2){
+		return collision(en1.style.marginLeft,en1.style.marginTop,en2.style.marginLeft,en2.style.marginTop)
+	}
+	function collision(x1,y1,x2,y2){
+		
+		return(Math.abs(x1-x2)<30&&Math.abs(y1-y2)<30)
 	}
 
 	function getRandom(max){
