@@ -29,12 +29,18 @@ img {position:relative;}
 	coronaPosition[1].y=30
 
 	var coronaInterval;
+	var atTop=1;
 	function start(){
 		coronaInterval=setInterval(function(){
-			var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-1]
+if(atTop==1){
+var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-1]
 			corona.style.marginLeft = xy.x;
 corona.style.marginTop = xy.y;
+atTop=0;
+}
+corona.style.marginTop=corona.style.marginTop-1;
+			
 
-		})
+		},200)
 	}
 </script>
