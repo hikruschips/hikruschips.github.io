@@ -23,17 +23,17 @@
 
 	function start(){
 		window.addEventListener('mousedown',function(e){
-			player.style.marginTop = e.pageX;
-			player.style.marginLeft = e.pageY;
-			console.log(myGameArea.x+', '+myGameArea.y);
+			player.style.marginLeft = e.pageX;
+			player.style.marginTop = e.pageY;
+			
 		})
 		window.addEventListener('mouseup',function(e){
 			// corona.style.marginTop = false;
 			// corona.style.marginLeft = false;
 		})
 		window.addEventListener('touchstart',function(e){
-			player.style.marginTop = e.pageX;
-			player.style.marginLeft = e.pageY;
+			player.style.marginLeft = e.pageX;
+			player.style.marginTop = e.pageY;
 		})
 		window.addEventListener('touchend',function(e){
 			// corona.style.marginTop.x = false;
@@ -61,5 +61,5 @@ atTop=0;
 corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
 			console.log(corona.style.marginTop)
 
-		},10)
+		},50)
 	}
