@@ -1,0 +1,30 @@
+<body>
+	<div id='score'></div>
+	<img width='500'height='500'id='stage'>
+	<img width='50'height='100'id='player'>
+	<img width='30',height='30'id='corona'>
+	<button onclick='start()'></button>
+</body>
+<script>
+	var stageSrc='insideTrain.jpg'
+	var coronaSrc='coronaVirus.jpg'
+	var playerSrc='healthyPerson.jpg'
+
+	var stage=document.getElementById('stage')
+	stage.src=stageSrc
+	var player=document.getElementById('player')
+	stage.src=playerSrc
+	var corona=document.getElementById('corona')
+	corona.src=coronaSrc
+	var coronaPosition=[{0,0},{30,30}]
+
+	var coronaInterval;
+	function start(){
+		coronaInterval=setInterval(function(){
+			var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-1]
+			corona.style.marginLeft = xy[0];
+corona.style.marginTop = xy[1];
+
+		})
+	}
+</script>
