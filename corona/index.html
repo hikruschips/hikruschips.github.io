@@ -1,14 +1,18 @@
+
+<style>
+img {position:relative;}
+</style>
 <body>
 	<div id='score'></div>
 	<img width='500'height='500'id='stage'>
 	<img width='50'height='100'id='player'>
 	<img width='30',height='30'id='corona'>
-	<button onclick='start()'></button>
+	<button onclick='start()'>start</button>
 </body>
 <script>
 	var stageSrc='insideTrain.jpg'
-	var coronaSrc='coronaVirus.jpg'
 	var playerSrc='healthyPerson.jpg'
+	var coronaSrc='coronaVirus.jpg'
 
 	var stage=document.getElementById('stage')
 	stage.src=stageSrc
