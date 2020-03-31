@@ -25,6 +25,8 @@
 	var coronaInterval;
 	var coronaAtTop=1;
 	var candyAtTop=1;
+	var coronaScore=0;
+	var candyScore=0;
 // function collisionEntity(en1,en2){
 // 		return collision(en1.style.marginLeft,en1.style.marginTop,en2.style.marginLeft,en2.style.marginTop)
 // 	}
@@ -134,15 +136,24 @@ if(getRandom(10)==9){//1/10 chance? whatever
 }
 
 
-if(parseInt(corona.style.marginTop.replace('.px',''))-30>screen.height){
+if(parseInt(corona.style.marginTop.replace('.px',''))+300>screen.height){
 	coronaAtTop=1;
 	console.log('below')
+	x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			corona.style.marginLeft = x
+corona.style.marginTop = y
+coronaAtTop=0;
 
 }
-if(parseInt(candy.style.marginTop.replace('.px',''))-30>screen.height){
-	candyAtTop=1;
+if(parseInt(candy.style.marginTop.replace('.px',''))+300>screen.height){
+	x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			candy.style.marginLeft = x
+candy.style.marginTop = y
+candyAtTop=0;
 	console.log('below')
-	candyAtTop=1;
+	
 }
 
 
@@ -151,6 +162,12 @@ if(collision(parseInt(candy.style.marginLeft.replace('.px','')),parseInt(candy.s
 
 	player.src=happyGirlSrc
 	//console.log('amsk')
+	candyScore++
+	document.getElementById('candyScore').innerHTML=candyScore
+	x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			candy.style.marginLeft = x
+candy.style.marginTop = y
 }
 
 if(collision(parseInt(corona.style.marginLeft.replace('.px','')),parseInt(corona.style.marginTop.replace('.px','')),parseInt(player.style.marginLeft.replace('.px','')),parseInt(player.style.marginTop.replace('.px','')))){
@@ -158,6 +175,13 @@ if(collision(parseInt(corona.style.marginLeft.replace('.px','')),parseInt(corona
 	//console.log("happy")
 	player.src=maskSrc
 	coronaAtTop=1;
+	coronaScore++
+	document.getElementById('coronaScore').innerHTML=coronaScore
+	x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			corona.style.marginLeft = x
+corona.style.marginTop = y
+
 }
 
 corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
@@ -175,5 +199,5 @@ return Math.floor(Math.random() * max)+1
 	function collision(x1,y1,x2,y2){
 		// console.log(Math.abs(x1-x2)+','+Math.abs(y1-y2))
 		
-		return(Math.abs(x1-x2)<100&&Math.abs(y1-y2)<100)
+		return(Math.abs(x1-x2)<180&&Math.abs(y1-y2)<180)
 	}
