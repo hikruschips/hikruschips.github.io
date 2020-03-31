@@ -142,17 +142,22 @@ if(parseInt(corona.style.marginTop.replace('.px',''))-30>screen.height){
 if(parseInt(candy.style.marginTop.replace('.px',''))-30>screen.height){
 	candyAtTop=1;
 	console.log('below')
+	candyAtTop=1;
 }
 
 
 if(collision(parseInt(candy.style.marginLeft.replace('.px','')),parseInt(candy.style.marginTop.replace('.px','')),parseInt(player.style.marginLeft.replace('.px','')),parseInt(player.style.marginTop.replace('.px','')))){
 	// console.log(collision)
+
 	player.src=happyGirlSrc
+	//console.log('amsk')
 }
 
 if(collision(parseInt(corona.style.marginLeft.replace('.px','')),parseInt(corona.style.marginTop.replace('.px','')),parseInt(player.style.marginLeft.replace('.px','')),parseInt(player.style.marginTop.replace('.px','')))){
 	// console.log(collision)
+	//console.log("happy")
 	player.src=maskSrc
+	coronaAtTop=1;
 }
 
 corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
