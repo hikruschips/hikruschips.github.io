@@ -162,6 +162,7 @@ corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
 
 		},50)
 	}
+	start()
 
 	function getRandom(max){
 return Math.floor(Math.random() * max)+1
