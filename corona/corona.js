@@ -24,7 +24,9 @@
 	var coronaInterval;
 	var coronaAtTop=1;
 	var candyAtTop=1;
-
+// function collisionEntity(en1,en2){
+// 		return collision(en1.style.marginLeft,en1.style.marginTop,en2.style.marginLeft,en2.style.marginTop)
+// 	}
 
 	function start(){
 		window.addEventListener('mousedown',function(e){
@@ -138,7 +140,7 @@ if(candy.style.marginTop-30>screen.height){
 	candyAtTop=1;
 }
 
-if(collisionEntity(corona,player)){
+if(collision(corona.style.marginLeft.replace('.px',''),corona.style.marginTop.replace('.px',''),player.style.marginLeft.replace('.px',''),player.style.marginTop.replace('.px',''))){
 	console.log(collision)
 	player.src=happyGirlSrc
 }
@@ -150,14 +152,10 @@ corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
 		},50)
 	}
 
-function collisionEntity(en1,en2){
-		return collision(en1.style.marginLeft,en1.style.marginTop,en2.style.marginLeft,en2.style.marginTop)
+	function getRandom(max){
+return Math.floor(Math.random() * max)+1
 	}
 	function collision(x1,y1,x2,y2){
 		
 		return(Math.abs(x1-x2)<30&&Math.abs(y1-y2)<30)
-	}
-
-	function getRandom(max){
-return Math.floor(Math.random() * max)+1
 	}
