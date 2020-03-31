@@ -7,7 +7,7 @@
 	var maskSrc='maskPerson.jpg'
 
 	var stage=document.getElementById('stage')
-	stage.src=stageSrc
+	// stage.src=stageSrc
 	var player=document.getElementById('player')
 	player.src=playerSrc
 	var corona=document.getElementById('corona')
