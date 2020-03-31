@@ -2,6 +2,8 @@
 	var stageSrc='insideTrain.jpg'
 	var playerSrc='healthyPerson.jpg'
 	var coronaSrc='coronaVirus.jpg'
+	var happyGirlSrc='happyGirlThumbsUp.jpg'
+	var candySrc='starbucks.jpg'
 
 	var stage=document.getElementById('stage')
 	stage.src=stageSrc
@@ -9,6 +11,8 @@
 	player.src=playerSrc
 	var corona=document.getElementById('corona')
 	corona.src=coronaSrc
+	var candy=document.getElementById('candy')
+	candy.src=candySrc
 	var coronaPosition=[]
 	coronaPosition[0]=[]
 	coronaPosition[1]=[]
@@ -18,11 +22,13 @@
 	coronaPosition[1].y=30
 
 	var coronaInterval;
-	var atTop=1;
+	var coronaAtTop=1;
+	var candyAtTop=1;
 
 
 	function start(){
 		window.addEventListener('mousedown',function(e){
+
 			player.style.marginLeft = e.pageX;
 			player.style.marginTop = e.pageY;
 			
@@ -52,14 +58,49 @@
 //     }
 // },10)
 		coronaInterval=setInterval(function(){
-if(atTop==1){
-var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-1]
-			corona.style.marginLeft = xy.x;
-corona.style.marginTop = xy.y;
-atTop=0;
+if(coronaAtTop==1){
+// var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-30]
+
+// var x=
+x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			corona.style.marginLeft = x
+corona.style.marginTop = y
+coronaAtTop=0;
+}
+
+if(candyAtTop==1){
+// var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-30]
+
+// var x=
+x=getRandom(window.screen.width)-30
+y=getRandom(window.screen.height)-30
+			candy.style.marginLeft = x
+candy.style.marginTop = y
+candyAtTop=0;
+}
+
+if(getRandom(10)==9){//1/10 chance? whatever
+	corona.style.marginTop=parseInt(getRandom()-30)
+}
+if(getRandom(10)==9){//1/10 chance? whatever
+	candy.style.marginTop=parseInt(getRandom()-30)
+}
+
+if(corona.style.marginTop-30>screen.height){
+	coronaAtTop=1;
+}
+if(candy.style.marginTop-30>screen.height){
+	candyAtTop=1;
 }
 corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
-			console.log(corona.style.marginTop)
-
+			//console.log(corona.style.marginTop)
+			candy.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
+			//console.log(corona.style.marginTop)
+			
 		},50)
+	}
+
+	function getRandom(max){
+return Math.floor(Math.random() * max)+1
 	}
