@@ -4,6 +4,7 @@
 	var coronaSrc='coronaVirus.jpg'
 	var happyGirlSrc='happyGirlThumbsUp.jpg'
 	var candySrc='starbucks.jpg'
+	var maskSrc='maskPerson.jpg'
 
 	var stage=document.getElementById('stage')
 	stage.src=stageSrc
@@ -132,19 +133,28 @@ if(getRandom(10)==9){//1/10 chance? whatever
 	candy.style.marginTop=parseInt(getRandom()-30)
 }
 
-if(corona.style.marginTop-30>screen.height){
+
+if(parseInt(corona.style.marginTop.replace('.px',''))-30>screen.height){
 	coronaAtTop=1;
+	console.log('below')
 
 }
-if(candy.style.marginTop-30>screen.height){
+if(parseInt(candy.style.marginTop.replace('.px',''))-30>screen.height){
 	candyAtTop=1;
+	console.log('below')
 }
 
 
-if(collision(parseInt(corona.style.marginLeft.replace('.px','')),parseInt(corona.style.marginTop.replace('.px','')),parseInt(player.style.marginLeft.replace('.px','')),parseInt(player.style.marginTop.replace('.px','')))){
-	console.log(collision)
+if(collision(parseInt(candy.style.marginLeft.replace('.px','')),parseInt(candy.style.marginTop.replace('.px','')),parseInt(player.style.marginLeft.replace('.px','')),parseInt(player.style.marginTop.replace('.px','')))){
+	// console.log(collision)
 	player.src=happyGirlSrc
 }
+
+if(collision(parseInt(corona.style.marginLeft.replace('.px','')),parseInt(corona.style.marginTop.replace('.px','')),parseInt(player.style.marginLeft.replace('.px','')),parseInt(player.style.marginTop.replace('.px','')))){
+	// console.log(collision)
+	player.src=maskSrc
+}
+
 corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
 			//console.log(corona.style.marginTop)
 			candy.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
@@ -157,7 +167,7 @@ corona.style.marginTop=parseInt(corona.style.marginTop.replace('.px',''))+1;
 return Math.floor(Math.random() * max)+1
 	}
 	function collision(x1,y1,x2,y2){
-		console.log(Math.abs(x1-x2)+','+Math.abs(y1-y2))
+		// console.log(Math.abs(x1-x2)+','+Math.abs(y1-y2))
 		
 		return(Math.abs(x1-x2)<1000&&Math.abs(y1-y2)<1000)
 	}
