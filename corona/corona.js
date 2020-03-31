@@ -20,7 +20,37 @@
 	var coronaInterval;
 	var atTop=1;
 
+
 	function start(){
+		window.addEventListener('mousedown',function(e){
+			player.style.marginTop = e.pageX;
+			player.style.marginLeft = e.pageY;
+			console.log(myGameArea.x+', '+myGameArea.y);
+		})
+		window.addEventListener('mouseup',function(e){
+			// corona.style.marginTop = false;
+			// corona.style.marginLeft = false;
+		})
+		window.addEventListener('touchstart',function(e){
+			player.style.marginTop = e.pageX;
+			player.style.marginLeft = e.pageY;
+		})
+		window.addEventListener('touchend',function(e){
+			// corona.style.marginTop.x = false;
+			// myGameArea.y = false;
+		})
+
+// 		touchInterval=setInterval(function(){
+
+// 			if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+//         var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+//         x = touch.pageX;
+//         y = touch.pageY;
+//     } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+//         x = e.clientX;
+//         y = e.clientY;
+//     }
+// },10)
 		coronaInterval=setInterval(function(){
 if(atTop==1){
 var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-1]
