@@ -32,8 +32,8 @@ img {position:relative;}
 	function start(){
 		coronaInterval=setInterval(function(){
 			var xy=coronaPosition[(Math.floor(Math.random() * coronaPosition.length)+1)-1]
-			corona.style.marginLeft = xy[0];
-corona.style.marginTop = xy[1];
+			corona.style.marginLeft = xy.x;
+corona.style.marginTop = xy.y;
 
 		})
 	}
