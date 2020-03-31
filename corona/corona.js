@@ -170,5 +170,5 @@ return Math.floor(Math.random() * max)+1
 	function collision(x1,y1,x2,y2){
 		// console.log(Math.abs(x1-x2)+','+Math.abs(y1-y2))
 		
-		return(Math.abs(x1-x2)<1000&&Math.abs(y1-y2)<1000)
+		return(Math.abs(x1-x2)<100&&Math.abs(y1-y2)<100)
 	}
