@@ -12,10 +12,19 @@
         background: white;
         font-size: 32px;
       }
+      .vr-button {
+        position: absolute;
+        color: white;
+        top: 10px;
+        left: 10px;
+        z-index: 999;
+        border: 1px solid white;
+      }
     </style>
+    <script type="module" crossorigin src="/main.js"></script>
   </head>
   <body>
-    <script type="module" src="/main.js"></script>
-    <div>test</div>
+    <div id="test-element">test</div>
+    <button id="vr-button">VR button</button>
   </body>
 </html>
